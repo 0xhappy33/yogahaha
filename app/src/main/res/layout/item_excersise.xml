@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp">
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ex_img"
+            android:scaleType="centerInside"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/bow_pose"/>
+        <TextView
+            android:id="@+id/ex_name"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:text="Tu the cay cau"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    
+</android.support.v7.widget.CardView>

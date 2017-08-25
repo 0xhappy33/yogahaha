@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ha.yogabeginner.SettingActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:padding="16dp"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp">
+        <RadioGroup
+            android:id="@+id/rdiGroup"
+            android:weightSum="3"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/rdiEasy"
+                android:text="Easy"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:theme="@style/MyRadioButton"/>
+            <RadioButton
+                android:id="@+id/rdiMedium"
+                android:text="Medium"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:theme="@style/MyRadioButton"/>
+            <RadioButton
+                android:id="@+id/rdiHard"
+                android:text="Hard"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:theme="@style/MyRadioButton"/>
+        </RadioGroup>
+    </android.support.v7.widget.CardView>
+
+    <ToggleButton
+        android:id="@+id/switchAlarm"
+        android:layout_below="@id/cardView"
+        android:textOn="On"
+        android:textOff="Off"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_below="@id/switchAlarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <info.hoang8f.widget.FButton
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/white"
+        app:buttonColor="@color/colorAccent"
+        app:shadowColor="@color/colorPrimary"
+        app:shadowEnabled="true"
+        app:shadowHeight="2dp"
+        app:cornerRadius="2dp"/>
+</RelativeLayout>
