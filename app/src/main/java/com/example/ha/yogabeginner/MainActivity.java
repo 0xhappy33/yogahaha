@@ -40,5 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         btnExercise = (Button) findViewById(R.id.btnExcercises);
         btnSetting = (Button) findViewById(R.id.btnSetting);
+        btnCalendar = (Button) findViewById(R.id.btnCalendar);
     }
 }

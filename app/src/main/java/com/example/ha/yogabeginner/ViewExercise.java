@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ha.yogabeginner.Utitls.ActivityUtitls;
+import com.example.ha.yogabeginner.Utitls.Common;
+import com.example.ha.yogabeginner.database.YogaDB;
+
 public class ViewExercise extends AppCompatActivity {
 
     private int image_id;
@@ -20,6 +24,8 @@ public class ViewExercise extends AppCompatActivity {
     private Button btnStart;
 
     boolean isRunning = false;
+
+    YogaDB yogaDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +49,16 @@ public class ViewExercise extends AppCompatActivity {
             public void onClick(View v) {
                 if (!isRunning){
                     btnStart.setText("DONE");
-                    new CountDownTimer(20000, 1000) {
+
+                    int timeLimit = 0;
+                    if(yogaDB.getSettingMode() == 0){
+                        timeLimit = Common.TIME_LIMIT_EASY;
+                    }else if (yogaDB.getSettingMode() == 1){
+                        timeLimit = Common.TIME_LIMIT_MEDIUM;
+                    }else{
+                        timeLimit = Common.TIME_LIMIT_HARD;
+                    }
+                    new CountDownTimer(timeLimit, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
                             timer.setText("" + millisUntilFinished/1000);
@@ -69,5 +84,7 @@ public class ViewExercise extends AppCompatActivity {
         timer = (TextView) findViewById(R.id.timer);
         title = (TextView) findViewById(R.id.title_detail);
         btnStart = (Button) findViewById(R.id.btnStart);
+
+        yogaDB = new YogaDB(this);
     }
 }

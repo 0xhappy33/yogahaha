@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ha.yogabeginner.ActivityUtitls;
+import com.example.ha.yogabeginner.Utitls.ActivityUtitls;
 import com.example.ha.yogabeginner.R;
 import com.example.ha.yogabeginner.ViewExercise;
 import com.example.ha.yogabeginner.interfaces.ItemClickListener;

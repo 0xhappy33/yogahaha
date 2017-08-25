@@ -1,4 +1,4 @@
-package com.example.ha.yogabeginner;
+package com.example.ha.yogabeginner.Utitls;
 
 /**
  * Created by Ha Truong on 8/25/2017.
