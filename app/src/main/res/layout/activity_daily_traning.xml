@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ha.yogabeginner.ViewExercise">
+
+    <TextView
+        android:id="@+id/title_detail"
+        android:text="Name of Exercie"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:textSize="24sp"
+        android:gravity="center"/>
+
+    <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+        android:id="@+id/progressBar"
+        android:layout_below="@id/title_detail"
+        android:indeterminate="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mpb_progressStyle="horizontal"
+        app:mpb_progressBackgroundTint="@color/colorAccent"
+        app:mpb_progressTint="@color/colorPrimaryDark"
+        style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"/>
+
+    <ImageView
+        android:id="@+id/detail_image"
+        android:src="@drawable/boat_pose"
+        android:layout_centerInParent="true"
+        android:layout_width="300dp"
+        android:layout_height="200dp" />
+
+    <LinearLayout
+        android:id="@+id/layout_get_ready"
+        android:visibility="invisible"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtGetReady"
+            android:text="GET READY"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txtCountDown"
+            android:text="5"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <info.hoang8f.widget.FButton
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/white"
+        app:buttonColor="@color/colorAccent"
+        app:shadowColor="@color/colorPrimary"
+        app:shadowEnabled="true"
+        app:shadowHeight="2dp"
+        app:cornerRadius="2dp"/>
+
+    <TextView
+        android:id="@+id/timer"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_above="@id/btnStart"
+        android:layout_marginBottom="8dp"/>
+
+</RelativeLayout>
