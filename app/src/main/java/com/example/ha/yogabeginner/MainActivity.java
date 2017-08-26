@@ -7,17 +7,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnExercise, btnSetting, btnCalendar;
-    private ImageView btnTraining;
+    @BindView(R.id.btnExcercises)
+    Button btnExercise;
+    @BindView(R.id.btnSetting)
+    Button btnSetting;
+    @BindView(R.id.btnCalendar)
+    Button btnCalendar;
+    @BindView(R.id.btnTraining)
+    ImageView btnTraining;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initView();
+        ButterKnife.bind(this);
         addEvents();
     }
 
@@ -25,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ListExercises.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, ListExercises.class));
             }
         });
 
@@ -40,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         btnTraining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, DailyTraning.class));
+                startActivity(new Intent(MainActivity.this, DailyTraining.class));
             }
         });
 
@@ -52,10 +60,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initView() {
-        btnExercise = (Button) findViewById(R.id.btnExcercises);
-        btnSetting = (Button) findViewById(R.id.btnSetting);
-        btnCalendar = (Button) findViewById(R.id.btnCalendar);
-        btnTraining = (ImageView) findViewById(R.id.btnTraining);
-    }
 }

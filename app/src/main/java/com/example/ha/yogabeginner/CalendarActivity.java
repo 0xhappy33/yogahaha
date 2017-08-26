@@ -8,6 +8,7 @@ import com.example.ha.yogabeginner.database.YogaDB;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -15,19 +16,22 @@ import java.util.List;
 public class CalendarActivity extends AppCompatActivity {
 
     MaterialCalendarView materialCalendarView;
-    HashSet<CalendarDay> list = new HashSet<>();
-
     YogaDB yogaDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
         yogaDB = new YogaDB(this);
 
         materialCalendarView = (MaterialCalendarView) findViewById(R.id.calendar);
+        Calendar calendar = Calendar.getInstance();
+        materialCalendarView.setSelectedDate(calendar.getTime());
+
         List<String> workoutDay = yogaDB.getWorkoutDays();
         HashSet<CalendarDay> convertList = new HashSet<>();
-        for (String value: workoutDay){
+        for (String value : workoutDay){
             convertList.add(CalendarDay.from(new Date(Long.parseLong(value))));
         }
         materialCalendarView.addDecorator(new WorkoutDoneDecorator(convertList));

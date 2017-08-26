@@ -14,10 +14,11 @@ import java.util.List;
 
 public class ListExercises extends AppCompatActivity {
 
-    List<Exercise> exerciseList = new ArrayList<>();
+    private List<Exercise> exerciseList = new ArrayList<>();
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -18,14 +18,26 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
-public class DailyTraning extends AppCompatActivity {
-
+public class DailyTraining extends AppCompatActivity {
+    @BindView(R.id.btnStart)
     Button btnStart;
+    @BindView(R.id.detail_image)
     ImageView ex_image;
-    TextView txtGetReady, txtCountDown, txtTimer, ex_name;
+    @BindView(R.id.txtGetReady)
+    TextView txtGetReady;
+    @BindView(R.id.txtCountDown)
+    TextView txtCountDown;
+    @BindView(R.id.timer)
+    TextView txtTimer;
+    @BindView(R.id.title_detail)
+    TextView ex_name;
+    @BindView(R.id.progressBar)
     MaterialProgressBar progressBar;
+    @BindView(R.id.layout_get_ready)
     LinearLayout layoutGetReady;
 
     private int ex_id = 0, limit_time = 0;
@@ -38,21 +50,12 @@ public class DailyTraning extends AppCompatActivity {
         setContentView(R.layout.activity_daily_traning);
 
         initData();
-        initView();
+        ButterKnife.bind(this);
+        yogaDB = new YogaDB(this);
         //addEvent();
         setProgressBarEvent();
         setExerciseInformation(ex_id);
         setEventButton();
-    }
-
-    private void addEvent() {
-        if (yogaDB.getSettingMode() == 0){
-            limit_time = Common.TIME_LIMIT_EASY;
-        }else if(yogaDB.getSettingMode() == 1){
-            limit_time = Common.TIME_LIMIT_MEDIUM;
-        }else{
-            limit_time = Common.TIME_LIMIT_HARD;
-        }
     }
 
     private void setEventButton() {
@@ -64,14 +67,7 @@ public class DailyTraning extends AppCompatActivity {
                     btnStart.setText("DONE");
                 }else
                     if (btnStart.getText().toString().toLowerCase().equals("done")){
-                        if (yogaDB.getSettingMode() == 0){
-                            exerciseEasyCountDown.cancel();
-                        }else if (yogaDB.getSettingMode() == 1){
-                            exerciseMediumCountDown.cancel();
-                        } else if (yogaDB.getSettingMode() == 2){
-                            exerciseHardCountDown.cancel();
-                        }
-
+                        checkSettingMode();
                         restTimeCountDown.cancel();
                         if (ex_id < list.size()){
                             showRestTime();
@@ -81,13 +77,7 @@ public class DailyTraning extends AppCompatActivity {
                         }else
                             showFinished();
                 }else{
-                        if (yogaDB.getSettingMode() == 0){
-                            exerciseEasyCountDown.cancel();
-                        }else if (yogaDB.getSettingMode() == 1){
-                            exerciseMediumCountDown.cancel();
-                        } else if (yogaDB.getSettingMode() == 2){
-                            exerciseHardCountDown.cancel();
-                        }
+                        checkSettingMode();
                         restTimeCountDown.cancel();
                         if (ex_id < list.size()){
                             setExerciseInformation(ex_id);
@@ -97,6 +87,16 @@ public class DailyTraning extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void checkSettingMode(){
+        if (yogaDB.getSettingMode() == 0){
+            exerciseEasyCountDown.cancel();
+        }else if (yogaDB.getSettingMode() == 1){
+            exerciseMediumCountDown.cancel();
+        } else if (yogaDB.getSettingMode() == 2){
+            exerciseHardCountDown.cancel();
+        }
     }
 
     private void showRestTime() {
@@ -234,7 +234,6 @@ public class DailyTraning extends AppCompatActivity {
         }
     };
 
-
     CountDownTimer restTimeCountDown = new CountDownTimer(10000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
@@ -261,19 +260,6 @@ public class DailyTraning extends AppCompatActivity {
 
     private void setProgressBarEvent() {
         progressBar.setMax(list.size());
-    }
-
-    private void initView() {
-        btnStart = (Button) findViewById(R.id.btnStart);
-        ex_image = (ImageView) findViewById(R.id.detail_image);
-        txtCountDown = (TextView) findViewById(R.id.txtCountDown);
-        txtGetReady = (TextView) findViewById(R.id.txtGetReady);
-        txtTimer = (TextView) findViewById(R.id.timer);
-        ex_name = (TextView) findViewById(R.id.title_detail);
-
-        layoutGetReady = (LinearLayout) findViewById(R.id.layout_get_ready);
-        progressBar = (MaterialProgressBar) findViewById(R.id.progressBar);
-        yogaDB = new YogaDB(this);
     }
 
     private void initData() {
