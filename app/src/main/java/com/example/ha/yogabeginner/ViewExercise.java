@@ -55,7 +55,7 @@ public class ViewExercise extends AppCompatActivity {
                         timeLimit = Common.TIME_LIMIT_EASY;
                     }else if (yogaDB.getSettingMode() == 1){
                         timeLimit = Common.TIME_LIMIT_MEDIUM;
-                    }else{
+                    }else if (yogaDB.getSettingMode() == 2){
                         timeLimit = Common.TIME_LIMIT_HARD;
                     }
                     new CountDownTimer(timeLimit, 1000) {

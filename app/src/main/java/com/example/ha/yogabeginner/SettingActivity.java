@@ -29,7 +29,6 @@ public class SettingActivity extends AppCompatActivity {
     YogaDB yogaDB;
     ToggleButton switchAlarm;
     TimePicker timePicker;
-    private int radioMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +92,9 @@ public class SettingActivity extends AppCompatActivity {
         int selectedID = rdiGroup.getCheckedRadioButtonId();
         if(selectedID == rdiEasy.getId()){
             yogaDB.saveSettingMode(0);
-        }else if(selectedID == rdiEasy.getId()){
+        }else if(selectedID == rdiMedium.getId()){
             yogaDB.saveSettingMode(1);
-        } else{
+        } else if(selectedID == rdiHard.getId()){
             yogaDB.saveSettingMode(2);
         }
     }
@@ -105,7 +104,7 @@ public class SettingActivity extends AppCompatActivity {
             rdiGroup.check(R.id.rdiEasy);
         }else if (radioMode == 1){
             rdiGroup.check(R.id.rdiMedium);
-        }else{
+        }else if (radioMode == 2){
             rdiGroup.check(R.id.rdiHard);
         }
     }

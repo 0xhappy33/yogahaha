@@ -40,7 +40,7 @@ public class DailyTraining extends AppCompatActivity {
     @BindView(R.id.layout_get_ready)
     LinearLayout layoutGetReady;
 
-    private int ex_id = 0, limit_time = 0;
+    private int ex_id = 0;
     List<Exercise> list = new ArrayList<>();
 
     YogaDB yogaDB;
@@ -134,7 +134,7 @@ public class DailyTraining extends AppCompatActivity {
         layoutGetReady.setVisibility(View.VISIBLE);
 
         txtGetReady.setText("GET READY");
-        new CountDownTimer(6000, 1000) {
+        new CountDownTimer(4000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 txtCountDown.setText("" + (millisUntilFinished - 1000) / 1000);
@@ -213,7 +213,7 @@ public class DailyTraining extends AppCompatActivity {
         }
     };
     // Count down for hard
-    CountDownTimer exerciseHardCountDown = new CountDownTimer(Common.TIME_LIMIT_EASY, 1000) {
+    CountDownTimer exerciseHardCountDown = new CountDownTimer(Common.TIME_LIMIT_HARD, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
             txtTimer.setText("" + millisUntilFinished/1000);
@@ -234,7 +234,7 @@ public class DailyTraining extends AppCompatActivity {
         }
     };
 
-    CountDownTimer restTimeCountDown = new CountDownTimer(10000, 1000) {
+    CountDownTimer restTimeCountDown = new CountDownTimer(3000, 1000) {
         @Override
         public void onTick(long millisUntilFinished) {
             txtCountDown.setText("" + millisUntilFinished/1000);
