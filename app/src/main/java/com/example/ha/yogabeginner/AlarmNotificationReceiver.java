@@ -21,7 +21,7 @@ public class AlarmNotificationReceiver extends BroadcastReceiver {
         builder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
-                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setSmallIcon(R.drawable.icon)
                 .setContentTitle("It's time")
                 .setContentText("Time to training")
                 .setContentInfo("Info");
